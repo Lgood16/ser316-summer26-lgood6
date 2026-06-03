@@ -22,11 +22,11 @@ Review ALL source files (in main not test) in the project and identify defects u
 
 | Defect ID | File | Line(s) | Category | Description | Severity |
 |-----------|------|---------|----------|-------------|----------|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Checkout.java | 246 | FD | Compares two strings with == | Medium |
+| 2 | Patron.java | 130-132 | CG | chkSuspend does the same thing as isAccountSuspended | Low |
+| 3 | Book.java | 112-115 | FD | resetAvailability sets available to be true always | High |
+| 4 | Book.java | 1-2 | CS | Unused imports | Low |
+| 5 | Book.java | 87-90 | FD | setAvailableCopies doesn't check the inputed number | High |
 | 6 | | | | | |
 | 7 | | | | | |
 | 8 | | | | | |
