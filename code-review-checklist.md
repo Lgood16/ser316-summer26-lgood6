@@ -26,12 +26,11 @@ Review ALL source files (in main not test) in the project and identify defects u
 | 2 | Patron.java | 130-132 | CG | chkSuspend does the same thing as isAccountSuspended | Low |
 | 3 | Book.java | 112-115 | FD | resetAvailability sets available to be true always | High |
 | 4 | Book.java | 1-2 | CS | Unused imports | Low |
-| 5 | Book.java | 87-90 | FD | setAvailableCopies doesn't check the inputed number | High |
-| 6 | | | | | |
-| 7 | | | | | |
-| 8 | | | | | |
-| 9 | | | | | |
-| 10 | | | | | |
+| 5 | Book.java | 87-90 | FD | setAvailableCopies doesn't make sure input is valid number | High |
+| 6 | Checkout.java | 44-50 | FD | No check for a null input in the functions | Medium |
+| 7 | Patron.java | 118-123 | CS | The Statements don't have whitespaces between them | Low |
+| 8 | Checkout.java | 17 | MD | None/unfished comment for history | Low |
+| 9 | Patron.java | 151 | CG | Empty else statement | Low |
 
 **Severity Levels:**
 - **Critical**: Causes system failure, data corruption, or security issues
