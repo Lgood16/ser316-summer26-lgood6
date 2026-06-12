@@ -1,7 +1,7 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Sample White-Box tests for the Checkout system.
@@ -29,6 +29,58 @@ public class CheckoutWhiteBoxSample {
         // Branch: type == null → TRUE
         int result = checkout.countBooksByType(null, false);
         assertEquals(0, result, "Should return 0 for null type");
+    }
+
+    @Test
+    @DisplayName("WB Test: checkoutBook - unavailable book")
+    public void test_CheckoutBook_unavailableBook() {
+        Book book = new Book("978-0-123456-78-9", "Test Book",
+                "Test Author", Book.BookType.FICTION, 0);
+
+        Patron patron = new Patron("P001", "Test Patron", "test@example.com",
+                Patron.PatronType.STUDENT);
+
+        checkout.addBook(book); 
+        checkout.registerPatron(patron); 
+
+        double result = checkout.checkoutBook(book, patron);
+
+        assertEquals(2.0, result, 0.01,
+                "Expected unsuccessful checkout (2.0)");
+
+    }
+
+    @Test
+    @DisplayName("WB Test: checkoutBook - available book")
+    public void test_CheckoutBook_availableBook() {
+        Book book = new Book("978-0-123456-78-9", "Test Book",
+                "Test Author", Book.BookType.FICTION, 3);
+
+        Patron patron = new Patron("P001", "Test Patron", "test@example.com",
+                Patron.PatronType.STUDENT);
+
+        checkout.addBook(book); 
+        checkout.registerPatron(patron); 
+
+        double result = checkout.checkoutBook(book, patron);
+
+        assertEquals(1.0, result, 0.01,
+                "Expected successful checkout (1.0)");
+
+    }
+
+    @Test
+    @DisplayName("WB Test: checkoutBook - null book")
+    public void test_checkoutBook_nullBook() {
+        Patron patron = new Patron("P001", "Test Patron", "test@example.com",
+                Patron.PatronType.STUDENT);
+
+        checkout.registerPatron(patron); 
+
+        double result = checkout.checkoutBook(null, patron);
+
+        assertEquals(2.1, result, 0.01,
+                "Expected unsuccessful checkout (2.1)");
     }
 
 }
