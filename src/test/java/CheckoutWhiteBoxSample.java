@@ -112,7 +112,7 @@ public class CheckoutWhiteBoxSample {
     }
 
     @Test
-    @DisplayName("WB Test: checkoutBook and return book")
+    @DisplayName("WB Test: return book")
     public void test_CheckoutBook_returnBook() {
         Book book = new Book("978-0-123456-78-9", "Test Book",
                 "Test Author", Book.BookType.FICTION, 3);
@@ -122,6 +122,7 @@ public class CheckoutWhiteBoxSample {
 
         checkout.addBook(book); 
         checkout.registerPatron(patron); 
+        checkout.checkoutBook(book, patron);
 
         double result = checkout.returnBook("978-0-123456-78-9", patron);
         assertEquals(0.0, result, 0.01,
